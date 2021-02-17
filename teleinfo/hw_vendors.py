@@ -40,7 +40,7 @@ class RpiDom(HW_serial_based):
         self.select_channel(self.CHANNEL_TELEINFO1)
 
     def read_char(self):
-        return self._serial_port.read(1)
+        return str(self._serial_port.read(1),'UTF-8')
 
     def select_channel(self, channel):
         assert channel in [self.CHANNEL_TELEINFO1, self.CHANNEL_TELEINFO2]
@@ -57,13 +57,13 @@ class UTInfo2(HW_serial_based):
         super(UTInfo2, self).__init__(port, *args, **kwargs)
 
     def read_char(self):
-        return self._serial_port.read(1)
+        return str(self._serial_port.read(1),'UTF-8')
 
 class PITInfo(HW_serial_based):
     def __init__(self, port="/dev/ttyAMA0", *args, **kwargs):
         super(PITInfo, self).__init__(port, *args, **kwargs)
 
     def read_char(self):
-        return self._serial_port.read(1)
+        return str(self._serial_port.read(1),'UTF-8')
 
 
